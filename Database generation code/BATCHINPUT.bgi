@@ -1,0 +1,324 @@
+Begin Defaults
+End Defaults
+
+Begin Equations
+End Equations
+
+Begin Model
+	NumMainBlades=16
+	Mode=Angle/Thickness
+	RightHandedCoordSystem
+
+	OutputBladePoints
+	BladeOutputPointClustering=BothEnds
+	NumBladePoints=60
+	NumLeadingEdgePoints=9
+	NumTrailingEdgePoints=9
+
+	CurveDisplayMaximumError=0.001148600000
+
+	DataFromLeToTe
+	BetaTangentialDef
+	ThicknessIsDimension
+
+	MeridionalSpanCurveRuledShape=RuledElementOnly
+
+	Designer="Samundra"
+	Company=""
+	Comment=""
+	DeviceType=Turbine
+	ConfigurationType=Radial
+	RotationType=Negative
+	GeometryUnits=M
+End Model
+
+Begin Meridional
+	MeridionalControlCurveMode=Normal
+	SpanByGeom
+	Begin HubCurve
+		New Segment
+			CurveType=Bezier
+			UpstreamControl=Free
+			Begin Data
+				( 0.000000,0.595868 )
+				( 0.000000,0.543078 )
+			End Data
+			DownstreamControl=Free
+		End Segment
+		New Segment
+			CurveType=Bezier
+			UpstreamControl=Free
+			Begin Data
+				( 0.000000,0.543078 )
+				( 0.009485,0.491203 )
+				( 0.035769,0.345542 )
+				( 0.090522,0.265566 )
+			End Data
+			DownstreamControl=Free
+		End Segment
+		New Segment
+			CurveType=Bezier
+			UpstreamControl=Free
+			Begin Data
+				( 0.090522,0.265566 )
+				( 0.342901,0.137172 )
+				( 0.615893,0.128469 )
+				( 0.928282,0.139591 )
+			End Data
+			DownstreamControl=Free
+		End Segment
+	End HubCurve
+	Begin ShroudCurve
+		New Segment
+			CurveType=Bezier
+			UpstreamControl=Free
+			Begin Data
+				( 0.245093,0.595669 )
+				( 0.248649,0.575628 )
+			End Data
+			DownstreamControl=Free
+		End Segment
+		New Segment
+			CurveType=Bezier
+			UpstreamControl=Free
+			Begin Data
+				( 0.248649,0.575628 )
+				( 0.309957,0.551142 )
+				( 0.430052,0.551075 )
+				( 0.499142,0.531454 )
+			End Data
+			DownstreamControl=Free
+		End Segment
+		New Segment
+			CurveType=Bezier
+			UpstreamControl=Free
+			Begin Data
+				( 0.499142,0.531454 )
+				( 0.593170,0.543568 )
+				( 0.923217,0.616493 )
+				( 0.927188,0.618125 )
+			End Data
+			DownstreamControl=Free
+		End Segment
+	End ShroudCurve
+	Begin InletCurve
+		New Segment
+			CurveType=Bezier
+			UpstreamControl=Free
+			Begin Data
+				( 0.000000,0.595868 )
+				( 0.245093,0.595669 )
+			End Data
+			DownstreamControl=Free
+		End Segment
+	End InletCurve
+	Begin ExhaustCurve
+		New Segment
+			CurveType=Bezier
+			UpstreamControl=Free
+			Begin Data
+				( 0.928282,0.139591 )
+				( 0.927188,0.618125 )
+			End Data
+			DownstreamControl=Free
+		End Segment
+	End ExhaustCurve
+	Begin LeadingEdgeCurve
+		New Segment
+			CurveType=Bezier
+			UpstreamControl=Free
+			Begin Data
+				( 0.000000,0.543078 )
+				( 0.066802,0.534195 )
+				( 0.223891,0.555452 )
+				( 0.248649,0.575628 )
+			End Data
+			DownstreamControl=Free
+		End Segment
+	End LeadingEdgeCurve
+	Begin TrailingEdgeCurve
+		New Segment
+			CurveType=Bezier
+			UpstreamControl=Free
+			Begin Data
+				( 0.090522,0.265566 )
+				( 0.189542,0.266442 )
+				( 0.491670,0.361536 )
+				( 0.499142,0.531454 )
+			End Data
+			DownstreamControl=Free
+		End Segment
+	End TrailingEdgeCurve
+
+	New SpanLayer
+		Name=Layer1
+		OutputLayer=T
+		SpanFraction=0.000000000
+	End SpanLayer
+
+	New SpanLayer
+		Name=Layer2
+		OutputLayer=T
+		SpanFraction=0.2500000000
+	End SpanLayer
+
+	New SpanLayer
+		Name=Layer3
+		OutputLayer=T
+		SpanFraction=0.5000000000
+	End SpanLayer
+
+	New SpanLayer
+		Name=Layer4
+		OutputLayer=T
+		SpanFraction=0.7500000000
+	End SpanLayer
+
+	New SpanLayer
+		Name=Layer5
+		OutputLayer=T
+		SpanFraction=1.000000000
+	End SpanLayer
+End Meridional
+
+New Blade
+	PitchFraction=0.000000000
+	LeadingEdgeEndType=Ellipse
+	HubLE_EllipseRatio=2.000000000
+	ShrLE_EllipseRatio=2.000000000
+	TrailingEdgeEndType=Ellipse
+	HubTE_EllipseRatio=1.000000000
+	ShrTE_EllipseRatio=1.000000000
+	EllipseAtMean=T
+
+	Begin AngleDefinition
+		AngleLocation=MeanLine
+		SpanwiseDistribution=General
+
+		New AngleCurve
+			Layer="Layer1"
+			DefinitionType=BetaCurve
+			HorizDim=PercentMeridionalPrime
+			VertDim=Degree
+
+			LE_Theta=0.000000000
+			New Segment
+				CurveType=Bezier
+				UpstreamControl=Free
+				Begin Data
+					( 0.000000,61.700106 )
+					( 33.333333,47.153553 )
+					( 66.666667,33.097918 )
+					( 100.000000,28.590021 )
+				End Data
+				DownstreamControl=Free
+			End Segment
+		End AngleCurve
+
+		New AngleCurve
+			Layer="Layer2"
+			DefinitionType=BetaCurve
+			HorizDim=PercentMeridionalPrime
+			VertDim=Degree
+
+			LE_Theta=0.000000000
+			New Segment
+				CurveType=Bezier
+				UpstreamControl=Free
+				Begin Data
+					( 0.000000,58.999756 )
+					( 33.333333,44.364260 )
+					( 66.666667,30.347067 )
+					( 100.000000,24.999982 )
+				End Data
+				DownstreamControl=Free
+			End Segment
+		End AngleCurve
+
+		New AngleCurve
+			Layer="Layer3"
+			DefinitionType=BetaCurve
+			HorizDim=PercentMeridionalPrime
+			VertDim=Degree
+
+			LE_Theta=0.000000000
+			New Segment
+				CurveType=Bezier
+				UpstreamControl=Free
+				Begin Data
+					( 0.000000,56.199998 )
+					( 33.333333,41.674634 )
+					( 66.666667,27.858131 )
+					( 100.000000,21.930017 )
+				End Data
+				DownstreamControl=Free
+			End Segment
+		End AngleCurve
+
+		New AngleCurve
+			Layer="Layer4"
+			DefinitionType=BetaCurve
+			HorizDim=PercentMeridionalPrime
+			VertDim=Degree
+
+			LE_Theta=0.000000000
+			New Segment
+				CurveType=Bezier
+				UpstreamControl=Free
+				Begin Data
+					( 0.000000,52.899990 )
+					( 33.333333,38.581522 )
+					( 66.666667,25.062837 )
+					( 100.000000,18.559994 )
+				End Data
+				DownstreamControl=Free
+			End Segment
+		End AngleCurve
+
+		New AngleCurve
+			Layer="Layer5"
+			DefinitionType=BetaCurve
+			HorizDim=PercentMeridionalPrime
+			VertDim=Degree
+
+			LE_Theta=0.000000000
+			New Segment
+				CurveType=Bezier
+				UpstreamControl=Free
+				Begin Data
+					( 0.000000,46.299975 )
+					( 33.333333,33.412910 )
+					( 66.666667,21.298686 )
+					( 100.000000,15.100016 )
+				End Data
+				DownstreamControl=Free
+			End Segment
+		End AngleCurve
+	End AngleDefinition
+
+	Begin ThicknessDefinition
+		ThicknessType=Normal To Camber Line
+		SpanwiseDistribution=General
+
+		New ThicknessCurve
+			Layer="Layer1"
+			HorizDim=PercentMeridionalPrime
+
+			New Segment
+				CurveType=Linear
+				Begin Data
+					( 0.000000000,0.01000000000 )
+					( 99.97099183,0.01000000000 )
+				End Data
+			End Segment
+		End ThicknessCurve
+	End ThicknessDefinition
+End Blade
+
+Begin PlusData
+Begin Case
+MachineType = Turb_Radial
+ComponentType = Rotor
+Units = M
+End Case
+End PlusData
